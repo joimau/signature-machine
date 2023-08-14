@@ -1,9 +1,12 @@
 {
   "name": "signature-machine",
   "version": "1.0.0",
+  "homepage": "https://joimau.github.io/signature-machine",
   "description": "",
   "main": "index.js",
   "scripts": {
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build",
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "NODE_ENV=development webpack serve",
     "build": "NODE_ENV=production webpack --mode production"
