@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+
+<body>
+    <table border="0" cellpadding="0" cellspacing="0" width="400"
+        style="font-family: Arial, sans-serif; border-collapse: collapse;">
+        <!-- Logo Sidebar -->
+        <tr>
+            <td bgcolor="#333" width="120" style="vertical-align: middle; padding: 10px; color: #fff;">
+                <img src="{url:Logo url}" alt="Company Logo" width="48" border="0"
+                    style="display:block; border:none; outline:none; text-decoration:none; margin: 0 auto;">
+            </td>
+            <td bgcolor="#f4f4f4" style="padding: 15px;">
+                <table border="0" cellpadding="0" cellspacing="0" width="100%">
+                    <!-- Name -->
+                    <tr>
+                        <td style="font-weight: bold; font-size: 14px; padding-bottom: 5px;">{string:Full name}</td>
+                    </tr>
+                    <!-- Position -->
+                    <tr>
+                        <td style="font-size: 12px; padding-bottom: 5px;">{string:Position}</td>
+                    </tr>
+                    <!-- Phone -->
+                    <tr>
+                        <td style="font-size: 12px; padding-bottom: 5px;">{string:Phone number}</td>
+                    </tr>
+                    <!-- Email -->
+                    <tr>
+                        <td style="font-size: 12px; padding-bottom: 5px;"><a href="mailto:{email:Email}"
+                                style="text-decoration:none; color: #333;">{email:Email}</a></td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+        <!-- Address -->
+        <tr>
+            <td bgcolor="#666" colspan="2" style="font-size: 12px; padding: 5px 15px; color: #fff;">
+                {string:Company address}
+            </td>
+        </tr>
+    </table>
+</body>
+
+</html>

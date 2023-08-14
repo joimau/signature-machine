@@ -1,7 +1,6 @@
 import React, { useContext, useRef } from 'react';
-import { Container, Paper, Typography } from '@mui/material';
+import { Paper, Typography } from '@mui/material';
 import { SelectedTemplateContentContext, DisplaySettingsContext, ResponsiveLayoutContext } from './index';
-import { templates } from './data';
 import './overlays.css';
 import Avatar from '@mui/material/Avatar';
 
