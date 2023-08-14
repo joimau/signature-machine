@@ -4,7 +4,11 @@ import { SelectedTemplateContentContext, DisplaySettingsContext, ResponsiveLayou
 import './overlays.css';
 import Avatar from '@mui/material/Avatar';
 
-const SignaturePreview: React.FC = () => {
+interface SignaturePreviewProps {
+    template?: string;
+}
+
+const SignaturePreview: React.FC<SignaturePreviewProps> = ({ template }) => {
     const { selectedTemplateContent } = useContext(SelectedTemplateContentContext) || {};
     const { displayGrid, displayOutline, displayMessage } = useContext(DisplaySettingsContext) || {};
     const { responsiveLayout } = useContext(ResponsiveLayoutContext) || {};
@@ -74,7 +78,7 @@ const SignaturePreview: React.FC = () => {
 
             <div className="signature-container">
                 {displayGrid && <div className="grid"></div>}
-                <div className={signatureClassName} dangerouslySetInnerHTML={{ __html: selectedTemplateContent }} />
+                <div className={signatureClassName} dangerouslySetInnerHTML={{ __html: template || selectedTemplateContent }} />
             </div>
         </Paper>
     );

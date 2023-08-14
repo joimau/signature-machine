@@ -1,4 +1,4 @@
-import React, { useState, FC, createContext } from 'react';
+import React, { useState, FC, createContext, useContext } from 'react';
 import ReactDOM from 'react-dom';
 
 import { Stack, Divider, TextField, Autocomplete, CssBaseline } from '@mui/material';
@@ -10,6 +10,8 @@ import SignaturePreview from './signature-preview';
 import { templates, jobTitles } from './data';
 import './variables.css';
 import InstallDialog from './install-dialog';
+import { useTemplateFields } from './template-logic';
+
 
 interface InstallDialogContextProps {
     isOpen: boolean;
@@ -51,29 +53,28 @@ export const ResponsiveLayoutContext = createContext<ResponsiveLayoutContextProp
 
 
 
-const MainApp: FC = ({ }) => (
-    <div className="app">
-        <CssBaseline />
-        <AppHeader />
-        <InstallDialog />
-        <Layout
-            sidebarArea={
-                <Stack spacing={3}>
-                    <TemplateSelection />
-                    <Divider />
-                    <Autocomplete
-                        id="job-title-autocomplete"
-                        freeSolo
-                        size="small"
-                        options={jobTitles.map((jobTitle) => jobTitle.label)}
-                        renderInput={(params) => <TextField {...params} label="Job Title" />}
-                    />
-                </Stack>
-            }
-            preview={<SignaturePreview />}
-        />
-    </div>
-);
+const MainApp: FC = () => {
+    const { selectedTemplateContent } = useContext(SelectedTemplateContentContext);
+    const { renderedFields, filledTemplate } = useTemplateFields(selectedTemplateContent);
+
+    return (
+        <div className="app">
+            <CssBaseline />
+            <AppHeader />
+            <InstallDialog />
+            <Layout
+                sidebarArea={
+                    <Stack spacing={3}>
+                        <TemplateSelection />
+                        <Divider />
+                        {renderedFields}
+                    </Stack>
+                }
+                preview={<SignaturePreview template={filledTemplate} />}
+            />
+        </div>
+    );
+};
 
 const App: FC = () => {
 
