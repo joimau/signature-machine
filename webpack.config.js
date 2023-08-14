@@ -23,9 +23,8 @@ module.exports = {
         extensions: ['*', '.js', '.jsx', '.ts', '.tsx'],
     },
     output: {
-        path: path.join(__dirname, 'dist'),
-        publicPath: '/',
-        filename: 'bundle.js',
+        path: path.resolve(__dirname, 'build'),
+        filename: 'bundle.js'
     },
     plugins: [
         new HtmlWebpackPlugin({
