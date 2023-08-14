@@ -1,0 +1,54 @@
+.app {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+}
+
+.layout {
+    flex: 1;
+    display: flex;
+    border-top: 1px solid var(--control-border-color);
+    height: 100%;
+}
+
+
+.left-panel {
+    padding: 24px;
+}
+
+.preview-area {
+    flex-grow: 1;
+    background-color: var(--preview-background-color);
+    overflow-y: hidden;
+    overflow-x: auto;
+    max-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+.resizable-handle {
+    width: 10px;
+    height: 100%;
+    background: transparent;
+    position: absolute;
+    top: 0;
+    right: 1px;
+}
+
+.resizable-handle:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 5px;
+    bottom: 0;
+    width: 1px;
+    background: var(--control-border-color);
+}
+
+.resizable-handle:hover:before {
+    background: #262523;
+    cursor: ew-resize;
+
+}
