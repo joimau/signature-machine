@@ -1,7 +1,6 @@
 import React, { useState, FC, createContext } from 'react';
 import ReactDOM from 'react-dom';
 
-import { ThemeProvider, Theme } from '@mui/material/styles';
 import { Stack, Divider, TextField, Autocomplete, CssBaseline } from '@mui/material';
 
 import Layout from './layout';
