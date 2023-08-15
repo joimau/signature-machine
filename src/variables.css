@@ -4,3 +4,19 @@
     --control-border-color: #e2e8f0;
     --preview-background-color: #ede8e1;
 }
+
+/* Remove the inner borders */
+.react-tel-input .input {
+    border: none !important;
+    box-shadow: none !important;
+}
+
+/* Adjust the country dropdown alignment */
+.react-tel-input .flag-dropdown {
+    position: absolute;
+    top: 0%;
+    transform: translateY(0%);
+    left: 0;
+    padding-left: 0px;
+    /* you can adjust this based on the visual alignment */
+}

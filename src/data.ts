@@ -1,5 +1,6 @@
 import simple from './templates/simple.html';
 
+
 export const jobTitles = [
     { label: 'Project Manager', id: 0 },
     { label: 'Product Designer', id: 1 },
@@ -15,5 +16,5 @@ export const templates = [
         label: 'Simple',
         id: 1,
         template: simple,
-    }
+    },
 ];

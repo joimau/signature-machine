@@ -7,9 +7,9 @@ import CloseIcon from '@mui/icons-material/Close';
 import FileOpenIcon from '@mui/icons-material/FileOpen';
 
 const TemplateSelection: React.FC = () => {
+    const fileInputRef = useRef<HTMLInputElement | null>(null);
     const context = useContext(SelectedTemplateContentContext);
     const [selectedFile, setSelectedFile] = useState<File | null>(null);
-    const [fileInputKey, setFileInputKey] = useState(0);
 
     if (!context) {
         throw new Error("TemplateSelection must be used within a SelectedTemplateContentContext.Provider");
@@ -21,7 +21,6 @@ const TemplateSelection: React.FC = () => {
         if (value) {
             setSelectedTemplateContent(value.template);
             setSelectedFile(null);
-            setFileInputKey(prevKey => prevKey + 1);
         }
     };
 
@@ -38,6 +37,11 @@ const TemplateSelection: React.FC = () => {
                 setSelectedTemplateContent(content);
             };
             reader.readAsText(file);
+
+            // Clear the file input
+            if (event.target) {
+                event.target.value = '';
+            }
         }
     };
 
@@ -46,16 +50,13 @@ const TemplateSelection: React.FC = () => {
         setSelectedTemplateContent(templates[0].template); // Reset to the first template's content
     };
 
-    const handleImportClick = () => {
-        if (fileInputRef.current) {
-            fileInputRef.current.value = '';
+    const handleImportClick = (inputRef: React.RefObject<HTMLInputElement>) => {
+        if (inputRef.current) {
+            inputRef.current.click();
         }
-        fileInputRef.current?.click();
     };
 
     const getOptionLabel = (option: Template): string => option.label;
-
-    const fileInputRef = useRef<HTMLInputElement | null>(null);
 
     return (
         <div style={{ display: 'flex' }}>
@@ -82,7 +83,7 @@ const TemplateSelection: React.FC = () => {
                                 )}
                             />
                         </div>
-                        <Button variant='outlined' disableElevation onClick={handleImportClick}>Upload</Button>
+                        <Button variant='outlined' disableElevation onClick={() => handleImportClick(fileInputRef)}>Upload</Button>
                     </Stack>
                 )}
 
@@ -108,7 +109,6 @@ const TemplateSelection: React.FC = () => {
                 )}
 
                 <input
-                    key={fileInputKey}
                     type="file"
                     style={{ display: 'none' }}
                     ref={fileInputRef}

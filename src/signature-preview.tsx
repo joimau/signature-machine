@@ -13,6 +13,7 @@ const SignaturePreview: React.FC<SignaturePreviewProps> = ({ template }) => {
     const { displayGrid, displayOutline, displayMessage } = useContext(DisplaySettingsContext) || {};
     const { responsiveLayout } = useContext(ResponsiveLayoutContext) || {};
 
+
     let containerWidth;
     switch (responsiveLayout) {
         case 'desktop':
